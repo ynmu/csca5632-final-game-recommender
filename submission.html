@@ -7546,18 +7546,14 @@ a.anchor-link {
 <span class="kn">from</span> <span class="nn">dython.nominal</span> <span class="kn">import</span> <span class="n">associations</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="n">GradientBoostingRegressor</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">wrap</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
 <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span><span class="p">,</span> <span class="n">make_scorer</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 
 <span class="kn">from</span> <span class="nn">skopt.space</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Categorical</span>
 
@@ -7992,9 +7988,6 @@ No duplicates found.
         
         <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Count'</span><span class="p">)</span>
         <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Distribution of </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    
-    <span class="c1"># for j in range(i + 1, len(axes)):</span>
-    <span class="c1">#     fig.delaxes(axes[j])</span>
     
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -9437,8 +9430,7 @@ Publisher, Developer, Rating
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Most popular genres by global sales</span>
-<span class="n">genre_sales</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Genre'</span><span class="p">)[</span><span class="s1">'Global_Sales'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">genre_sales</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Genre'</span><span class="p">)[</span><span class="s1">'Global_Sales'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'Global_Sales'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Genre'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">genre_sales</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">'viridis'</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">'Genre'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Popularity of Genres Sorted by Global Sales'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Total Global Sales (in millions)'</span><span class="p">)</span>
@@ -9682,8 +9674,7 @@ Publisher, Developer, Rating
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Re-run the preprocessor with the updated feature set</span>
-<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
     <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
         <span class="p">(</span><span class="s1">'num'</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="p">[</span><span class="s1">'Critic_Score'</span><span class="p">,</span> <span class="s1">'Global_Sales'</span><span class="p">,</span> <span class="s1">'User_Score'</span><span class="p">,</span> <span class="s1">'NA_EU_Sales'</span><span class="p">,</span> <span class="s1">'JP_Sales'</span><span class="p">]),</span>
         <span class="p">(</span><span class="s1">'cat'</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="s1">'first'</span><span class="p">),</span> <span class="p">[</span><span class="s1">'Genre'</span><span class="p">,</span> <span class="s1">'Year_Category'</span><span class="p">])</span>
@@ -10007,32 +9998,29 @@ Maximum Number of Iterations: 115
 <span class="n">top_genres_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">top_year_categories_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="c1"># Calculate the required statistics for each cluster</span>
 <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data_with_clusters</span><span class="p">[</span><span class="s1">'Cluster'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()):</span>
-    <span class="c1"># Filter the data for the current cluster</span>
     <span class="n">cluster_data</span> <span class="o">=</span> <span class="n">data_with_clusters</span><span class="p">[</span><span class="n">data_with_clusters</span><span class="p">[</span><span class="s1">'Cluster'</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster</span><span class="p">]</span>
     
-    <span class="c1"># Append cluster id</span>
     <span class="n">cluster_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
 
-    <span class="c1"># 1. Average Critic Score and Average User Score</span>
+    <span class="c1"># Average Critic Score and Average User Score</span>
     <span class="n">avg_critic_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cluster_data</span><span class="p">[</span><span class="s1">'Critic_Score'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     <span class="n">avg_user_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cluster_data</span><span class="p">[</span><span class="s1">'User_Score'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     
-    <span class="c1"># 2. Average Sales in Each Region</span>
+    <span class="c1"># Average Sales in Each Region</span>
     <span class="n">avg_na_eu_sales</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cluster_data</span><span class="p">[</span><span class="s1">'NA_EU_Sales'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     <span class="n">avg_jp_sales</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cluster_data</span><span class="p">[</span><span class="s1">'JP_Sales'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     <span class="n">avg_global_sales</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cluster_data</span><span class="p">[</span><span class="s1">'Global_Sales'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     
-    <span class="c1"># 3. Top 5 Frequent Genres</span>
+    <span class="c1"># Top 5 Frequent Genres</span>
     <span class="n">top_genres</span> <span class="o">=</span> <span class="n">cluster_data</span><span class="p">[</span><span class="s1">'Genre'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
     <span class="n">top_genres_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_genres</span><span class="p">))</span>
     
-    <span class="c1"># 4. Top 5 Year Categories</span>
+    <span class="c1"># Top 5 Year Categories</span>
     <span class="n">top_year_categories</span> <span class="o">=</span> <span class="n">cluster_data</span><span class="p">[</span><span class="s1">'Year_Category'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
     <span class="n">top_year_categories_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_year_categories</span><span class="p">))</span>
 
-<span class="c1"># Create a DataFrame to hold the cluster summary</span>
+
 <span class="n">cluster_summary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">'Cluster'</span><span class="p">:</span> <span class="n">cluster_ids</span><span class="p">,</span>
     <span class="s1">'Avg Critic Score'</span><span class="p">:</span> <span class="n">avg_critic_scores</span><span class="p">,</span>
